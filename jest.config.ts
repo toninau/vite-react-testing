@@ -7,6 +7,9 @@ const config: Config = {
   clearMocks: true,
   setupFilesAfterEnv: ['./jest.setup.ts'],
   testPathIgnorePatterns: ['dist'],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
 };
 
 export default config;

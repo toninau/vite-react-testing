@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithClient } from '../../test/test-utils';
+import { renderWithClient } from '@/test/test-utils';
 import NotesList from './NotesList';
 
 describe('<NotesList />', () => {

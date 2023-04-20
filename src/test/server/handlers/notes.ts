@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import type { Note } from '../../../features/notes';
+import type { Note } from '@/features/notes';
 
 const notes: Note[] = [
   {

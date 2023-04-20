@@ -1,5 +1,5 @@
 import type { Note } from './types';
-import Card from '../../components/Card';
+import Card from '@/components/Card';
 import { useQuery } from '@tanstack/react-query';
 
 type NoteItemProps = {
