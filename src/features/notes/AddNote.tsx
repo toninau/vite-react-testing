@@ -7,7 +7,7 @@ const postNote = async (note: PostNote) => {
     method: 'POST',
     body: JSON.stringify(note),
   });
-  const data = await result.json();
+  const data = (await result.json()) as Note;
   return data;
 };
 
@@ -32,7 +32,7 @@ function AddNote() {
         return [...notes, newNote];
       });
       // invalidate all the lists, but don't refetch the active one
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: ['notes'],
         refetchType: 'none',
       });

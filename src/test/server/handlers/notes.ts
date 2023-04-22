@@ -29,7 +29,7 @@ export const noteHandlers = [
     return res(ctx.status(200), ctx.json(notes), ctx.delay(150));
   }),
   rest.post('*/api/notes', async (req, res, ctx) => {
-    const body = await req.json();
+    const body: Note = await req.json();
     const response = {
       ...body,
       id: Math.floor(Math.random() * (1000 - 5) + 5),

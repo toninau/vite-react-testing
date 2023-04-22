@@ -18,7 +18,7 @@ function NoteItem({ title, text }: NoteItemProps) {
 
 const getNotes = async (): Promise<Note[]> => {
   const result = await fetch('https://jsonplaceholder.typicode.com/api/notes');
-  const data = await result.json();
+  const data = (await result.json()) as Note[];
   return data;
 };
 

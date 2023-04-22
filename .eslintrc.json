@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "dist",
+    "public"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:react-hooks/recommended",
+    // NOTE: has to be LAST, so it gets the chance to override other configs.
+    "prettier"
+  ],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [
+              "@/*/*/*"
+            ],
+            "message": "Import from parent instead (@/*/*)"
+          },
+          {
+            "group": [
+              "../../*"
+            ],
+            "message": "Use absolute import instead (@/*)"
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts?(x)"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.eslint.json"
+      }
+    }
+  ]
+}
