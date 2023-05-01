@@ -1,9 +1,9 @@
-import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import Notes from '@/features/notes';
-import { queryClient } from '@/lib/react-query';
+import Notifications, { NotificationProvider } from '@/features/notifications';
+import { QueryProvider } from '@/providers/QueryProvider';
 
 function ErrorFallback({ error }: { error: Error }) {
   return (
@@ -20,10 +20,13 @@ function ErrorFallback({ error }: { error: Error }) {
 function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <QueryClientProvider client={queryClient}>
-        <Notes />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <NotificationProvider>
+        <QueryProvider>
+          <Notifications />
+          <Notes />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryProvider>
+      </NotificationProvider>
     </ErrorBoundary>
   );
 }
