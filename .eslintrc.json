@@ -1,15 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "dist",
-    "public"
-  ],
+  "ignorePatterns": ["dist", "public"],
   "extends": [
     "eslint:recommended",
     "react-app",
-    "plugin:react-hooks/recommended",
-    // NOTE: has to be LAST, so it gets the chance to override other configs.
-    "prettier"
+    "plugin:react-hooks/recommended"
   ],
   "rules": {
     "no-restricted-imports": [
@@ -17,38 +12,36 @@
       {
         "patterns": [
           {
-            "group": [
-              "@/*/*/*"
-            ],
+            "group": ["@/*/*/*"],
             "message": "Import from parent instead (@/*/*)"
           },
           {
-            "group": [
-              "../../*"
-            ],
-            "message": "Use absolute import instead (@/*)"
+            "group": ["../../*"],
+            "message": "Use absolute import instead (@/*/*)"
           }
         ]
       }
-    ]
+    ],
+    "react/jsx-no-constructed-context-values": "error"
   },
   "overrides": [
     {
-      "files": [
-        "**/*.ts?(x)"
-      ],
+      "files": ["**/*.ts?(x)"],
       "extends": [
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
-      "plugins": [
-        "@typescript-eslint"
-      ],
+      "plugins": ["@typescript-eslint"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": "./tsconfig.eslint.json"
       }
+    },
+    // NOTE: has to be LAST, so it gets the chance to override other configs.
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "extends": ["prettier"]
     }
   ]
 }
